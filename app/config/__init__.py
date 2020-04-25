@@ -4,7 +4,7 @@ from .base import *
 
 env = Env()
 
-if env.bool("STATS_ENV_CONFIG", False):
+if env.bool("APP_ENV_CONFIG", False):
     from .environ import *
 else:
     try:
