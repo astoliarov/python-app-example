@@ -1,5 +1,14 @@
 version: '3'
 services:
+  api:
+    build: ./app/
+    volumes:
+      - ./app/:/app
+    command: uvicorn api.fastapi.api_entrypoint:fast_api_app --host 0.0.0.0
+    env_file:
+      - ./variables/dev.example.env
+    ports:
+    - "8000:8000"
   celery_worker:
     build: ./app/
     volumes:
