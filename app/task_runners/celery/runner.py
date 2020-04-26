@@ -1,18 +1,20 @@
 # coding: utf-8
 from celery import Celery
 
-from .tasks import task_add
+from core.business_logic import AddBusinessLogic
+from core.interfaces import ITaskRunner
+
+from .tasks import AddTask
 
 
-class CeleryTaskRunner:
+class CeleryTaskRunner(ITaskRunner):
 
-    def __init__(self, broker_url: str, result_backend_url: str) -> None:
+    def __init__(self, broker_url: str, result_backend_url: str, add_business_logic: AddBusinessLogic) -> None:
+        self.add_business_logic = add_business_logic
         self.broker_url = broker_url
         self.app = Celery('tasks', broker=broker_url, backend=result_backend_url)
-        self._register_tasks()
 
-    def _register_tasks(self):
-        self.add_task = self.app.task(task_add)
+        self.add_task = self.app.task(AddTask(self.add_business_logic).get_task_func())
 
     def run_add(self, first: int, second: int) -> None:
         self.add_task.delay(first, second)
