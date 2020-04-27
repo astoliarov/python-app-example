@@ -9,6 +9,15 @@ services:
       - ./variables/dev.example.env
     ports:
     - "8000:8000"
+  grpc:
+    build: ./app/
+    volumes:
+      - ./app/:/app
+    command: python grpc_entrypoint.py
+    env_file:
+      - ./variables/dev.example.env
+    ports:
+      - "5555:5555"
   celery_worker:
     build: ./app/
     volumes:

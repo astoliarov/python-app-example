@@ -1,5 +1,6 @@
 # coding: utf-8
 import config
+from api.grpc.server import GRPCInterface
 
 from core.business_logic import AddBusinessLogic, DelayedAddBusinessLogic
 
@@ -18,4 +19,5 @@ class Application:
         self.delayed_add_bl = DelayedAddBusinessLogic(self.task_runner)
 
         self.interface = FastAPIInterface(self.delayed_add_bl)
+        self.grpc_interface = GRPCInterface(self.delayed_add_bl, config.GRPC_PORT, config.GRPC_WORKER_NUM)
         self.cli = init_cli("basic app CLI", self)
