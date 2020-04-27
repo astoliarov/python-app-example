@@ -9,3 +9,6 @@ check-fmt:
 
 mypy:
 	cd app && mypy ./.. --ignore-missing-imports
+
+tests:
+	cd app && nose2 -v
