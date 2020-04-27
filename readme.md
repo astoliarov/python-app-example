@@ -1,9 +1,11 @@
-# Basic app
+# Very opinionated python app template
 
-This is example/template of python app template
-Main concept of this app:
-1. Layers (idea from Hexagonal/Clean Architecture but not so strict) and borders
-2. Interface independence (HTTP, RPC over Rabbit, GRPC)
+### Why this template is created?
 
-This template and concepts are great for micro- and regular services, data processing services and CLI tools. But also can be applied to a big web application.
+I launch project's from time to time and copy-paste patterns from one project to another and it take time to collect things that I need.
+So I thought that it is a good idea to collect as much patterns as possible in one place
 
+### Concepts of this template
+1. Layers of application
+2. Dependency injection
+3. Maximum possible independence from outer code (libs, frameworks & etc)
