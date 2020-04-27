@@ -6,11 +6,13 @@ from .command import Command
 
 
 class CLI:
-    def __init__(self, cli_name) -> None:
+    def __init__(self, cli_name: str) -> None:
         self.parser = argparse.ArgumentParser(description=cli_name)
         self.subparsers = self.parser.add_subparsers(help="commands", dest="command")
 
-        self.handlers = {}
+        self.handlers = (
+            {}
+        )  # type: typing.Dict[str, typing.Callable[[typing.Dict[typing.Any, typing.Any], typing.Any], None]]
 
     def register_commands(self, commands: typing.List[Command]) -> None:
         for command in commands:

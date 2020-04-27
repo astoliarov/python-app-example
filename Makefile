@@ -6,3 +6,6 @@ fmt:
 
 check-fmt:
 	black . -l 120 --check
+
+mypy:
+	cd app && mypy ./.. --ignore-missing-imports

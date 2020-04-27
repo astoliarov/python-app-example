@@ -2,6 +2,8 @@
 
 import abc
 
+import typing
+
 
 class Command(metaclass=abc.ABCMeta):
     """
@@ -28,7 +30,7 @@ class Command(metaclass=abc.ABCMeta):
         return ""
 
     @abc.abstractmethod
-    def execute(self, opts, args) -> None:
+    def execute(self, opts: typing.Dict[typing.Any, typing.Any], args: typing.Any) -> None:
         """
         This method when actual work done
         :param opts: environment options
