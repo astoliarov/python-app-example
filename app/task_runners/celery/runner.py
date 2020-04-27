@@ -8,11 +8,10 @@ from .tasks import AddTask
 
 
 class CeleryTaskRunner(ITaskRunner):
-
     def __init__(self, broker_url: str, result_backend_url: str, add_business_logic: AddBusinessLogic) -> None:
         self.add_business_logic = add_business_logic
         self.broker_url = broker_url
-        self.app = Celery('tasks', broker=broker_url, backend=result_backend_url)
+        self.app = Celery("tasks", broker=broker_url, backend=result_backend_url)
 
         self.add_task = self.app.task(AddTask(self.add_business_logic).get_task_func())
 

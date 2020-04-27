@@ -10,7 +10,6 @@ from cli.custom import init_cli
 
 
 class Application:
-
     def __init__(self):
         self.add_bl = AddBusinessLogic()
 

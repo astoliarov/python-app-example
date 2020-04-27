@@ -3,7 +3,6 @@ from core.business_logic import AddBusinessLogic
 
 
 class AddTask:
-
     def __init__(self, add_business_logic: AddBusinessLogic) -> None:
         self.business_logic = add_business_logic
 

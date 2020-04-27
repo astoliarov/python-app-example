@@ -6,10 +6,9 @@ from .command import Command
 
 
 class CLI:
-
     def __init__(self, cli_name) -> None:
         self.parser = argparse.ArgumentParser(description=cli_name)
-        self.subparsers = self.parser.add_subparsers(help='commands', dest='command')
+        self.subparsers = self.parser.add_subparsers(help="commands", dest="command")
 
         self.handlers = {}
 

@@ -4,7 +4,6 @@ import abc
 
 
 class ITaskRunner(metaclass=abc.ABCMeta):
-
     @abc.abstractmethod
     def run_add(self, first: int, second: int) -> None:
         pass

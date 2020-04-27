@@ -6,7 +6,6 @@ from IPython import embed
 
 
 class ShellCommand(Command):
-
     def __init__(self, app_instance):
         self.app_instance = app_instance
 
@@ -19,4 +18,3 @@ class ShellCommand(Command):
     def execute(self, opts, args) -> None:
         app_instance = self.app_instance
         embed()
-

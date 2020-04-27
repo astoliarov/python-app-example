@@ -28,13 +28,10 @@ class Servicer(interface_pb2_grpc.InterfaceServicer):
 
 
 class GRPCInterface:
-
     def __init__(self, delayed_add_bl: DelayedAddBusinessLogic, port: str, max_worker_num: int):
         self.address = f"[::]:{port}"
         self.servicer = Servicer(delayed_add_bl)
-        self.grpc_server = grpc.server(
-            futures.ThreadPoolExecutor(max_workers=max_worker_num)
-        )
+        self.grpc_server = grpc.server(futures.ThreadPoolExecutor(max_workers=max_worker_num))
         interface_pb2_grpc.add_InterfaceServicer_to_server(self.servicer, self.grpc_server)
 
     def serve(self):
